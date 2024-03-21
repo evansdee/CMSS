@@ -1,0 +1,580 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+input {
+  transition: all 0.6s ease;
+  &:focus {
+    outline: 1px solid #28282b;
+    transition: all 0.6s ease;
+  }
+}
+@mixin flex($jc-value: flex-start, $fd: row, $ai: flex-start) {
+  display: flex;
+  justify-content: $jc-value;
+  flex-direction: $fd;
+  align-items: $ai;
+  //   align-items:  /;
+}
+@mixin padding($up: 0.5em, $left: 1em) {
+  padding: $up $left;
+}
+$blue: rgb(80, 140, 219);
+$width: 100%;
+
+.width {
+  width: $width;
+}
+
+body {
+  background-color: #f5f5f5;
+}
+.App {
+  font-family: sans-serif;
+  position: relative;
+  display: flex;
+  // justify-content: center;
+  // align-items: center;
+  .sideBar {
+    @include flex("", column, flex-end);
+    background-color: #1c1c25;
+    width: 10%;
+    height: 100vh;
+    position: sticky;
+    padding: 1em;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    // float: left;
+
+    img {
+      width: 70%;
+      display: block;
+      cursor: pointer;
+      // float: right;
+    }
+
+    ul {
+      color: #fff;
+      li {
+        text-transform: capitalize;
+        margin: 1em 0;
+        font-size: 1em;
+        text-align: right;
+        cursor: pointer;
+      }
+    }
+  }
+
+  main {
+    width: 90%;
+    position: relative;
+
+ 
+
+    .container {
+      width: 100%;
+      height: 80%;
+      @include flex(center, column, center);
+
+      form {
+        background-color: #fff;
+        padding: 1em;
+        width: 35%;
+
+        @include flex(center, column, center);
+
+        input {
+          padding: 0.5em;
+          margin: 0.3em 0;
+          border: 2px solid #ddd;
+          width: 100%;
+
+          &:focus {
+            outline: none;
+          }
+        }
+
+        label {
+          width: 100%;
+
+          margin: 1em 0;
+        }
+        button {
+          width: 80%;
+          border: none;
+          background-color: rgb(80, 140, 219);
+          color: #fff;
+          margin: 1.5em 0;
+          padding: 0.5em 1em;
+        }
+      }
+    }
+    nav {
+      padding: 1em 0;
+      background-color: #ddd;
+      @include flex(space-around, row, center);
+      position: sticky;
+      top: 0;
+      right: 0;
+      left: 0;
+      width: 100%;
+      z-index: 99;
+
+      div {
+        display: flex;
+        align-items: center;
+
+        h5 {
+          margin-left: 2em;
+        }
+      }
+
+      header {
+        h2 {
+          text-transform: capitalize;
+          font-size: 1.2em;
+        }
+      }
+      button {
+        border: none;
+        background-color: rgb(80, 140, 219);
+        color: #fff;
+        padding: 0.5em 1em;
+      }
+    }
+
+    > main {
+      width: 100%;
+      padding: 2em;
+      @include flex(center, row, center);
+      gap: 2em;
+      div {
+        cursor: pointer;
+        width: 25%;
+        height: 200px;
+        background-color: rgb(253, 253, 253);
+        text-transform: capitalize;
+        transition: all .3s ease-in;
+        @include flex(center, column, center);
+
+        &:hover{
+          transform: scale(1.05);
+          border: 2px solid #28282b;
+          border-radius: 50px;
+        }
+
+        .icon {
+          font-size: 6em;
+        }
+      }
+    }
+
+    .session {
+      color: #28282b;
+      h3 {
+        background-color: #dddddd86;
+        padding: 0.3em 0.5em;
+      }
+      .session-container {
+        @include flex(space-between, row, flex-start);
+        .left {
+          width: 24%;
+          padding: 1.5em 1em;
+
+          label {
+            width: $width;
+            display: block;
+            margin: 1em 0;
+
+            input,
+            select {
+              width: $width;
+              padding: 0.5em;
+              margin: 0.2em 0;
+            }
+          }
+          .btn {
+            text-align: center;
+
+            button {
+              outline: none;
+              @include padding();
+              background-color: $blue;
+              border: none;
+              margin: 0 0.3em;
+              color: #fff;
+            }
+          }
+
+          .label-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+
+            label {
+              width: 47%;
+            }
+            // gap: 1em;
+          }
+        }
+        .right {
+          width: 75%;
+
+          main.filterInput {
+            margin: 0.5em 0;
+
+            input {
+              padding: 0.5em;
+            }
+          }
+          table.tab {
+            width: 100%;
+
+            thead {
+              background-color: #dddddd86;
+            }
+            th {
+              font-size: 0.8rem;
+              word-wrap: break-word;
+              padding: 0 0.5em;
+            }
+            tr.tableItem {
+              td:last-of-type {
+                color: $blue;
+              }
+            }
+          
+            td {
+              margin: 0 0.3em;
+              font-size: 0.9rem;
+            }
+            td,
+            th {
+              @include padding(1em, 0.5em);
+            }
+            tr {
+              &:nth-of-type(even) {
+                background-color: #dddddd86;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .edit-container {
+      position: relative;
+      color: #28282b;
+      .edit-icon {
+        background-color: #dddddd86;
+        padding: 0 0.5em;
+        color: #28282b;
+        font-size: 1.5em;
+        @include flex(row, center);
+      }
+
+      .form {
+        @include flex(center, column, center);
+        width: 40%;
+        padding: 2em;
+
+        label {
+          margin: 1em 0;
+
+          input {
+            padding: 0.75em 1em;
+            margin-left: 1em;
+          }
+        }
+
+        button {
+          outline: none;
+          border: none;
+          padding: 0.5em 1em;
+          background-color: $blue;
+          color: #fff;
+        }
+      }
+
+      .alert {
+        position: absolute;
+        top: 10%;
+        left: 50%;
+        transform: translate(-50%, -10%);
+        // display: none;
+        background-color: rgb(155, 199, 88);
+        padding: 0.5em;
+        color: #fff;
+        border-radius: 50px;
+      }
+
+      label {
+        margin-left: 1.5em;
+
+        input[type="checkbox"] {
+          margin-right: 0.5em;
+          // appearance: none;
+          accent-color: #28282b;
+        }
+      }
+    }
+
+    .enrollment {
+      color: #28282b;
+
+      .activeIdx {
+        background-color: $blue;
+        color: #fff;
+      }
+      header {
+        @include flex(flex-start, row, center);
+        border-bottom: 1px solid #dad7d7;
+
+        p {
+          margin: 0 0.5em 0 0;
+          padding: 0.5em;
+          font-size: 0.9em;
+          cursor: pointer;
+        }
+      }
+
+      table.tab {
+        width: 100%;
+
+        thead {
+          background-color: #dddddd86;
+        }
+        th {
+          font-size: 0.8rem;
+          word-wrap: break-word;
+          padding: 0 0.5em;
+        }
+        tr.tableItem {
+          td:last-of-type {
+            color: $blue;
+          }
+        }
+        tr.enrollItem{
+          td:first-of-type {
+            color: $blue;
+          }
+        }
+        td {
+          margin: 0 0.3em;
+          font-size: 0.9rem;
+        }
+        td,
+        th {
+          @include padding(1em, 0.5em);
+        }
+        tr {
+          &:nth-of-type(even) {
+            background-color: #dddddd86;
+          }
+        }
+      }
+
+      .filterInput{
+        input{
+          padding: .5em;
+          margin: .3em 1.5em;
+          font-size: 1em;
+        }
+      }
+
+      .form {
+        padding: 0.5em 1.5em;
+
+        section.sec {
+          margin: 1em 0;
+
+          @include flex(space-between, row, center);
+          flex-wrap: wrap;
+          padding: 0 1em;
+
+          label {
+            width: 30%;
+            margin: 1em 0;
+            input,
+            select {
+              width: 100%;
+              padding: 0.5em;
+              font-size: 1em;
+              // appearance: auto;
+            }
+          }
+        }
+
+        section.contact {
+          padding: 0 1em;
+
+          input,
+          select {
+            width: 100%;
+            padding: 0.5em;
+            margin: 1em 0;
+            font-size: 1em;
+          }
+          .input-flex {
+            display: flex;
+            gap: 1.5em;
+          }
+        }
+        section.bank {
+          margin: 1em 0;
+
+          @include flex(space-between, row, center);
+          flex-wrap: wrap;
+          padding: 0 1em;
+
+          input,
+          select {
+            width: 30%;
+            padding: 0.5em;
+            font-size: 1em;
+          }
+        }
+
+        section.chk {
+          @include flex(space-between, row, center);
+          margin: 1em 0;
+          padding: 0 1em;
+
+          button {
+            padding: 0.5em 1em;
+            background-color: $blue;
+            border: none;
+            color: #fff;
+          }
+
+          input[type="checkbox"] {
+            accent-color: #28282b;
+            // appearance: none;
+          }
+          input[type="text"],
+          input[type="number"],
+          select {
+            // width:15%;
+            padding: 0.5em;
+            font-size: 1em;
+          }
+          select.wid {
+            width: 20%;
+          }
+        }
+
+        table {
+          width: 100%;
+
+          thead {
+            background-color: #dddddd86;
+            position: relative;
+          }
+          tbody {
+            position: relative;
+
+            tr td:last-of-type {
+              cursor: pointer;
+              font-size: 1em;
+            }
+          }
+          th {
+            font-size: 0.8rem;
+            word-wrap: break-word;
+            padding: 0 0.5em;
+          }
+
+          td {
+            margin: 0 0.3em;
+            font-size: 0.9rem;
+            text-align: center;
+          }
+          td,
+          th {
+            @include padding(1em, 0.5em);
+          }
+          tr {
+            &:nth-of-type(even) {
+              background-color: #dddddd86;
+            }
+          }
+        }
+
+        .last {
+          margin: 1.5em 0 .5em;
+        }
+        .flex{
+          display: flex;
+          width: 60%;
+          gap: 2em;
+          select,input{
+            padding: .5em;
+            width: 50%;
+            font-size: 1em;
+          }
+        }
+        .btn{
+          margin: 2em 0;
+          @include flex(center,row ,center );
+          gap: 2em;
+          button{
+            border: none;
+            padding: .5em 1em;
+            color: #fff;
+            cursor: pointer;
+
+            &:first-of-type{
+              background-color: rgb(155, 199, 88);
+            }
+            &:last-of-type{
+              background-color: $blue;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+
+  section table.tabe {
+    width: 100%;
+  
+    thead {
+      background-color: #dddddd86;
+    }
+    th {
+      font-size: 0.8rem;
+      word-wrap: break-word;
+      padding: 0 0.5em;
+    }
+    tr.tableItem {
+      td:last-of-type {
+        color: $blue;
+      }
+    }
+    tr.enrollItem{
+      td:first-of-type {
+        color: $blue;
+      }
+    }
+    td {
+      margin: 0 0.3em;
+      font-size: 0.9rem;
+    }
+    td,
+    th {
+      @include padding(1em, 0.5em);
+    }
+    tr {
+      &:nth-of-type(even) {
+        background-color: #dddddd86;
+      }
+    }
+  }
+}
+

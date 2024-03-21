@@ -1,13 +1,516 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+input {
+  transition: all 0.6s ease;
 }
+input:focus {
+  outline: 1px solid #28282b;
+  transition: all 0.6s ease;
+}
+
+.width {
+  width: 100%;
+}
+
+body {
+  background-color: #f5f5f5;
+}
+
+.App {
+  font-family: sans-serif;
+  position: relative;
+  display: flex;
+}
+.App .sideBar {
+  display: flex;
+  justify-content: "";
+  flex-direction: column;
+  align-items: flex-end;
+  background-color: #1c1c25;
+  width: 10%;
+  height: 100vh;
+  position: sticky;
+  padding: 1em;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+.App .sideBar img {
+  width: 70%;
+  display: block;
+  cursor: pointer;
+}
+.App .sideBar ul {
+  color: #fff;
+}
+.App .sideBar ul li {
+  text-transform: capitalize;
+  margin: 1em 0;
+  font-size: 1em;
+  text-align: right;
+  cursor: pointer;
+}
+.App main {
+  width: 90%;
+  position: relative;
+}
+.App main .container {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.App main .container form {
+  background-color: #fff;
+  padding: 1em;
+  width: 35%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.App main .container form input {
+  padding: 0.5em;
+  margin: 0.3em 0;
+  border: 2px solid #ddd;
+  width: 100%;
+}
+.App main .container form input:focus {
+  outline: none;
+}
+.App main .container form label {
+  width: 100%;
+  margin: 1em 0;
+}
+.App main .container form button {
+  width: 80%;
+  border: none;
+  background-color: rgb(80, 140, 219);
+  color: #fff;
+  margin: 1.5em 0;
+  padding: 0.5em 1em;
+}
+.App main nav {
+  padding: 1em 0;
+  background-color: #ddd;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+}
+.App main nav div {
+  display: flex;
+  align-items: center;
+}
+.App main nav div h5 {
+  margin-left: 2em;
+}
+.App main nav header h2 {
+  text-transform: capitalize;
+  font-size: 1.2em;
+}
+.App main nav button {
+  border: none;
+  background-color: rgb(80, 140, 219);
+  color: #fff;
+  padding: 0.5em 1em;
+}
+.App main > main {
+  width: 100%;
+  padding: 2em;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  gap: 2em;
+}
+.App main > main div {
+  cursor: pointer;
+  width: 25%;
+  height: 200px;
+  background-color: rgb(253, 253, 253);
+  text-transform: capitalize;
+  transition: all 0.3s ease-in;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.App main > main div:hover {
+  transform: scale(1.05);
+  border: 2px solid #28282b;
+  border-radius: 50px;
+}
+.App main > main div .icon {
+  font-size: 6em;
+}
+.App main .session {
+  color: #28282b;
+}
+.App main .session h3 {
+  background-color: rgba(221, 221, 221, 0.5254901961);
+  padding: 0.3em 0.5em;
+}
+.App main .session .session-container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: flex-start;
+}
+.App main .session .session-container .left {
+  width: 24%;
+  padding: 1.5em 1em;
+}
+.App main .session .session-container .left label {
+  width: 100%;
+  display: block;
+  margin: 1em 0;
+}
+.App main .session .session-container .left label input,
+.App main .session .session-container .left label select {
+  width: 100%;
+  padding: 0.5em;
+  margin: 0.2em 0;
+}
+.App main .session .session-container .left .btn {
+  text-align: center;
+}
+.App main .session .session-container .left .btn button {
+  outline: none;
+  padding: 0.5em 1em;
+  background-color: rgb(80, 140, 219);
+  border: none;
+  margin: 0 0.3em;
+  color: #fff;
+}
+.App main .session .session-container .left .label-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.App main .session .session-container .left .label-flex label {
+  width: 47%;
+}
+.App main .session .session-container .right {
+  width: 75%;
+}
+.App main .session .session-container .right main.filterInput {
+  margin: 0.5em 0;
+}
+.App main .session .session-container .right main.filterInput input {
+  padding: 0.5em;
+}
+.App main .session .session-container .right table.tab {
+  width: 100%;
+}
+.App main .session .session-container .right table.tab thead {
+  background-color: rgba(221, 221, 221, 0.5254901961);
+}
+.App main .session .session-container .right table.tab th {
+  font-size: 0.8rem;
+  word-wrap: break-word;
+  padding: 0 0.5em;
+}
+.App main .session .session-container .right table.tab tr.tableItem td:last-of-type {
+  color: rgb(80, 140, 219);
+}
+.App main .session .session-container .right table.tab td {
+  margin: 0 0.3em;
+  font-size: 0.9rem;
+}
+.App main .session .session-container .right table.tab td,
+.App main .session .session-container .right table.tab th {
+  padding: 1em 0.5em;
+}
+.App main .session .session-container .right table.tab tr:nth-of-type(even) {
+  background-color: rgba(221, 221, 221, 0.5254901961);
+}
+.App main .edit-container {
+  position: relative;
+  color: #28282b;
+}
+.App main .edit-container .edit-icon {
+  background-color: rgba(221, 221, 221, 0.5254901961);
+  padding: 0 0.5em;
+  color: #28282b;
+  font-size: 1.5em;
+  display: flex;
+  justify-content: row;
+  flex-direction: center;
+  align-items: flex-start;
+}
+.App main .edit-container .form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+  padding: 2em;
+}
+.App main .edit-container .form label {
+  margin: 1em 0;
+}
+.App main .edit-container .form label input {
+  padding: 0.75em 1em;
+  margin-left: 1em;
+}
+.App main .edit-container .form button {
+  outline: none;
+  border: none;
+  padding: 0.5em 1em;
+  background-color: rgb(80, 140, 219);
+  color: #fff;
+}
+.App main .edit-container .alert {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -10%);
+  background-color: rgb(155, 199, 88);
+  padding: 0.5em;
+  color: #fff;
+  border-radius: 50px;
+}
+.App main .edit-container label {
+  margin-left: 1.5em;
+}
+.App main .edit-container label input[type=checkbox] {
+  margin-right: 0.5em;
+  accent-color: #28282b;
+}
+.App main .enrollment {
+  color: #28282b;
+}
+.App main .enrollment .activeIdx {
+  background-color: rgb(80, 140, 219);
+  color: #fff;
+}
+.App main .enrollment header {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid #dad7d7;
+}
+.App main .enrollment header p {
+  margin: 0 0.5em 0 0;
+  padding: 0.5em;
+  font-size: 0.9em;
+  cursor: pointer;
+}
+.App main .enrollment table.tab {
+  width: 100%;
+}
+.App main .enrollment table.tab thead {
+  background-color: rgba(221, 221, 221, 0.5254901961);
+}
+.App main .enrollment table.tab th {
+  font-size: 0.8rem;
+  word-wrap: break-word;
+  padding: 0 0.5em;
+}
+.App main .enrollment table.tab tr.tableItem td:last-of-type {
+  color: rgb(80, 140, 219);
+}
+.App main .enrollment table.tab tr.enrollItem td:first-of-type {
+  color: rgb(80, 140, 219);
+}
+.App main .enrollment table.tab td {
+  margin: 0 0.3em;
+  font-size: 0.9rem;
+}
+.App main .enrollment table.tab td,
+.App main .enrollment table.tab th {
+  padding: 1em 0.5em;
+}
+.App main .enrollment table.tab tr:nth-of-type(even) {
+  background-color: rgba(221, 221, 221, 0.5254901961);
+}
+.App main .enrollment .filterInput input {
+  padding: 0.5em;
+  margin: 0.3em 1.5em;
+  font-size: 1em;
+}
+.App main .enrollment .form {
+  padding: 0.5em 1.5em;
+}
+.App main .enrollment .form section.sec {
+  margin: 1em 0;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0 1em;
+}
+.App main .enrollment .form section.sec label {
+  width: 30%;
+  margin: 1em 0;
+}
+.App main .enrollment .form section.sec label input,
+.App main .enrollment .form section.sec label select {
+  width: 100%;
+  padding: 0.5em;
+  font-size: 1em;
+}
+.App main .enrollment .form section.contact {
+  padding: 0 1em;
+}
+.App main .enrollment .form section.contact input,
+.App main .enrollment .form section.contact select {
+  width: 100%;
+  padding: 0.5em;
+  margin: 1em 0;
+  font-size: 1em;
+}
+.App main .enrollment .form section.contact .input-flex {
+  display: flex;
+  gap: 1.5em;
+}
+.App main .enrollment .form section.bank {
+  margin: 1em 0;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0 1em;
+}
+.App main .enrollment .form section.bank input,
+.App main .enrollment .form section.bank select {
+  width: 30%;
+  padding: 0.5em;
+  font-size: 1em;
+}
+.App main .enrollment .form section.chk {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  margin: 1em 0;
+  padding: 0 1em;
+}
+.App main .enrollment .form section.chk button {
+  padding: 0.5em 1em;
+  background-color: rgb(80, 140, 219);
+  border: none;
+  color: #fff;
+}
+.App main .enrollment .form section.chk input[type=checkbox] {
+  accent-color: #28282b;
+}
+.App main .enrollment .form section.chk input[type=text],
+.App main .enrollment .form section.chk input[type=number],
+.App main .enrollment .form section.chk select {
+  padding: 0.5em;
+  font-size: 1em;
+}
+.App main .enrollment .form section.chk select.wid {
+  width: 20%;
+}
+.App main .enrollment .form table {
+  width: 100%;
+}
+.App main .enrollment .form table thead {
+  background-color: rgba(221, 221, 221, 0.5254901961);
+  position: relative;
+}
+.App main .enrollment .form table tbody {
+  position: relative;
+}
+.App main .enrollment .form table tbody tr td:last-of-type {
+  cursor: pointer;
+  font-size: 1em;
+}
+.App main .enrollment .form table th {
+  font-size: 0.8rem;
+  word-wrap: break-word;
+  padding: 0 0.5em;
+}
+.App main .enrollment .form table td {
+  margin: 0 0.3em;
+  font-size: 0.9rem;
+  text-align: center;
+}
+.App main .enrollment .form table td,
+.App main .enrollment .form table th {
+  padding: 1em 0.5em;
+}
+.App main .enrollment .form table tr:nth-of-type(even) {
+  background-color: rgba(221, 221, 221, 0.5254901961);
+}
+.App main .enrollment .form .last {
+  margin: 1.5em 0 0.5em;
+}
+.App main .enrollment .form .flex {
+  display: flex;
+  width: 60%;
+  gap: 2em;
+}
+.App main .enrollment .form .flex select, .App main .enrollment .form .flex input {
+  padding: 0.5em;
+  width: 50%;
+  font-size: 1em;
+}
+.App main .enrollment .form .btn {
+  margin: 2em 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  gap: 2em;
+}
+.App main .enrollment .form .btn button {
+  border: none;
+  padding: 0.5em 1em;
+  color: #fff;
+  cursor: pointer;
+}
+.App main .enrollment .form .btn button:first-of-type {
+  background-color: rgb(155, 199, 88);
+}
+.App main .enrollment .form .btn button:last-of-type {
+  background-color: rgb(80, 140, 219);
+}
+.App section table.tabe {
+  width: 100%;
+}
+.App section table.tabe thead {
+  background-color: rgba(221, 221, 221, 0.5254901961);
+}
+.App section table.tabe th {
+  font-size: 0.8rem;
+  word-wrap: break-word;
+  padding: 0 0.5em;
+}
+.App section table.tabe tr.tableItem td:last-of-type {
+  color: rgb(80, 140, 219);
+}
+.App section table.tabe tr.enrollItem td:first-of-type {
+  color: rgb(80, 140, 219);
+}
+.App section table.tabe td {
+  margin: 0 0.3em;
+  font-size: 0.9rem;
+}
+.App section table.tabe td,
+.App section table.tabe th {
+  padding: 1em 0.5em;
+}
+.App section table.tabe tr:nth-of-type(even) {
+  background-color: rgba(221, 221, 221, 0.5254901961);
+}/*# sourceMappingURL=index.css.map */
